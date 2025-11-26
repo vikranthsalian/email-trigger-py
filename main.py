@@ -24,7 +24,6 @@ DEBUG_SMTP = "1"
 #                    "Set them before running. Current values: "
 #                    f"SMTP_USER={'set' if SMTP_USER else 'NOT SET'}, SMTP_PASS={'set' if SMTP_PASS else 'NOT SET'}")
 
-
 @app.post("/send-email")
 async def send_email(
     to: str = Form(...),
@@ -40,7 +39,7 @@ async def send_email(
                                                     "Set SMTP_USER and SMTP_PASS environment variables.")
 
     msg = EmailMessage()
-    msg["From"] = SMTP_USER
+    msg["From"] = smtp_user
     msg["To"] = to
     msg["Subject"] = subject
     msg.set_content(message)
@@ -83,7 +82,7 @@ async def send_email(
             server.ehlo()
 
         # Attempt login
-        if isinstance(SMTP_USER, str) and isinstance(SMTP_PASS, str):
+        if isinstance(smtp_user, str) and isinstance(smtp_password, str):
             # explicit check to avoid None causing smtplib internal errors
             server.login(smtp_user, smtp_password)
         else:
@@ -114,6 +113,6 @@ async def send_email(
     return {"status": "Email sent", "message_id": msg_id, "attachments": [f.filename for f in files]}
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5002))
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=port)
