@@ -1,29 +1,45 @@
+import os
+from fastapi import FastAPI, UploadFile, File, Form
+from typing import List
 import smtplib
 from email.message import EmailMessage
 
-SMTP_HOST = "smtp.gmail.com"   # or your provider's SMTP server
-SMTP_PORT = 587                # 587 for TLS, 465 for SSL
-SMTP_USER = os.environ.get('MAILER_EMAIL')
-SMTP_PASS = os.environ.get('MAILER_PASSWORD')
+app = FastAPI()
 
-def send_email(to_email: str, subject: str, body: str):
+SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.gmail.com")
+SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
+SMTP_USER = os.environ.get("SMTP_USER")
+SMTP_PASS = os.environ.get("SMTP_PASS")
+
+@app.post("/send-email")
+async def send_email(
+    to: str = Form(...),
+    subject: str = Form(...),
+    message: str = Form(...),
+    files: List[UploadFile] = File(default=[])
+):
     msg = EmailMessage()
     msg["From"] = SMTP_USER
-    msg["To"] = to_email
+    msg["To"] = to
     msg["Subject"] = subject
-    msg.set_content(body)
+    msg.set_content(message)
 
-    # Connect to SMTP server with TLS
+    for file in files:
+        content = await file.read()
+        maintype, subtype = "application", "octet-stream"
+        if file.content_type and "/" in file.content_type:
+            maintype, subtype = file.content_type.split("/", 1)
+
+        msg.add_attachment(
+            content,
+            maintype=maintype,
+            subtype=subtype,
+            filename=file.filename,
+        )
+
     with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
-        server.ehlo()
         server.starttls()
-        server.ehlo()
-        server.login(SMTP_USER, SMTP_PASS)  # <-- auth happens here
+        server.login(SMTP_USER, SMTP_PASS)
         server.send_message(msg)
 
-if __name__ == "__main__":
-    send_email(
-        to_email="receiver@example.com",
-        subject="Test email from Python",
-        body="Hello! This is a test email sent using Python + SMTP auth."
-    )
+    return {"status": "Email sent"}
