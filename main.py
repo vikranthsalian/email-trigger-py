@@ -3,8 +3,8 @@ from email.message import EmailMessage
 
 SMTP_HOST = "smtp.gmail.com"   # or your provider's SMTP server
 SMTP_PORT = 587                # 587 for TLS, 465 for SSL
-SMTP_USER = "your_email@example.com"
-SMTP_PASS = "your_smtp_or_app_password"
+SMTP_USER = os.environ.get('MAILER_EMAIL')
+SMTP_PASS = os.environ.get('MAILER_PASSWORD')
 
 def send_email(to_email: str, subject: str, body: str):
     msg = EmailMessage()
