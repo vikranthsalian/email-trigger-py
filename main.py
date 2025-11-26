@@ -116,6 +116,6 @@ async def send_email(
     return {"status": "Email sent", "message_id": msg_id, "attachments": [f.filename for f in files]}
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5002))
+    port = int(os.environ.get("PORT", 5000))
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=port)
