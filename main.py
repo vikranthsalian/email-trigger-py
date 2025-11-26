@@ -6,10 +6,10 @@ from email.message import EmailMessage
 
 app = FastAPI()
 
-SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.gmail.com")
-SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
-SMTP_USER = os.environ.get("SMTP_USER")
-SMTP_PASS = os.environ.get("SMTP_PASS")
+SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
+SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
+SMTP_USER = os.getenv("SMTP_USER")
+SMTP_PASS = os.getenv("SMTP_PASS")
 
 @app.post("/send-email")
 async def send_email(
@@ -43,3 +43,8 @@ async def send_email(
         server.send_message(msg)
 
     return {"status": "Email sent"}
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5001))
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=port)
