@@ -7,6 +7,9 @@ import smtplib
 from email.message import EmailMessage
 from email.utils import make_msgid
 
+import socket
+from pydantic import BaseModel
+
 app = FastAPI()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("email-sender")
@@ -26,6 +29,20 @@ DEBUG_SMTP = "1"
 #     logger.warning("SMTP_USER or SMTP_PASS environment variable is not set. "
 #                    "Set them before running. Current values: "
 #                    f"SMTP_USER={'set' if SMTP_USER else 'NOT SET'}, SMTP_PASS={'set' if SMTP_PASS else 'NOT SET'}")
+
+class TCPCheck(BaseModel):
+    host: str
+    port: int
+    timeout: float = 5.0
+
+@app.post("/check-smtp")
+def check_smtp_conn(body: TCPCheck):
+    try:
+        with socket.create_connection((body.host, body.port), timeout=body.timeout) as s:
+            return {"ok": True, "host": body.host, "port": body.port}
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"Connection failed: {e}")
+
 
 @app.post("/send-email")
 async def send_email(
