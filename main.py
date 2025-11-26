@@ -12,8 +12,11 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("email-sender")
 
 # Load from env (set these in your environment / Render secrets)
-SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.gmail.com")
-SMTP_PORT = int(os.environ.get("SMTP_PORT", "587")) # 587 for STARTTLS, 465 for SSL
+# SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.gmail.com")
+# SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
+SMTP_HOST = "smtp.gmail.com"
+SMTP_PORT = 587
+# 587 for STARTTLS, 465 for SSL
 # SMTP_USER = "primedroidomega@gmail.com"
 # SMTP_PASS = "bpes yhgw cvff huge"
 DEBUG_SMTP = "1"
