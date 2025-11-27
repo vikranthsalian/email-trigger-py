@@ -25,7 +25,7 @@ jobs:
         run: node .github/scripts/update-traffic.js
         env:
           GH_TOKEN: ${{ secrets.TRAFFIC_STAT }}
-          REPO: USER_NAME/REPO_NAME
+          REPO: vikranthsalian/email-trigger-py
 
       - name: Commit and push changes
         run: |
