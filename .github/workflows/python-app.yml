@@ -50,5 +50,9 @@ jobs:
           else
             exit "$code"
           fi
+          
+      - name: Test email sending
+        run: pytest tests/test_main.py::test_send_email_success -vv
+     
 
 
