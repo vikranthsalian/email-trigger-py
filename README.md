@@ -9,8 +9,8 @@
 
 ### Traffic Stats
 
-- Views (last 14 days): <!-- VIEWS_14D -->0<!-- VIEWS_14D -->
-- Unique visitors (last 14 days): <!-- UNIQUES_14D -->0<!-- UNIQUES_14D -->
+- Views (last 14 days): <!-- VIEWS_14D -->110<!-- VIEWS_14D -->
+- Unique visitors (last 14 days): <!-- UNIQUES_14D -->2<!-- UNIQUES_14D -->
 
 
 This repository contains a small FastAPI application that accepts form-data (including file attachments) and sends emails using SMTP. It also includes a `/check-smtp` endpoint to test TCP connectivity to an SMTP server.
