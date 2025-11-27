@@ -5,6 +5,7 @@
 ![Uvicorn](https://img.shields.io/badge/Uvicorn-ASGI%20Server-orange)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow)
 ![Status](https://img.shields.io/badge/Status-Active-success)
+[![Update Traffic Stats](https://github.com/vikranthsalian/email-trigger-py/actions/workflows/update-traffic.yml/badge.svg)](https://github.com/vikranthsalian/email-trigger-py/actions/workflows/update-traffic.yml)
 ![Repo Visitors](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/vikranthsalian/email-trigger-py&title=Repo%20Visitors)
 
 ### Traffic Stats
