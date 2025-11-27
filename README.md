@@ -5,6 +5,7 @@
 ![Uvicorn](https://img.shields.io/badge/Uvicorn-ASGI%20Server-orange)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow)
 ![Status](https://img.shields.io/badge/Status-Active-success)
+![Repo Visitors](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/<your-username>/<your-repo>&title=Repo%20Visitors)
 
 This repository contains a small FastAPI application that accepts form-data (including file attachments) and sends emails using SMTP. It also includes a `/check-smtp` endpoint to test TCP connectivity to an SMTP server.
 
