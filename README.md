@@ -1,5 +1,11 @@
 # FastAPI Email Sender
 
+![Python](https://img.shields.io/badge/Python-3.13-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-API%20Framework-009688)
+![Uvicorn](https://img.shields.io/badge/Uvicorn-ASGI%20Server-orange)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow)
+![Status](https://img.shields.io/badge/Status-Active-success)
+
 This repository contains a small FastAPI application that accepts form-data (including file attachments) and sends emails using SMTP. It also includes a `/check-smtp` endpoint to test TCP connectivity to an SMTP server.
 
 ---
