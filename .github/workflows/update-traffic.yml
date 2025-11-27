@@ -1,5 +1,8 @@
 name: Update Traffic Stats
 
+permissions:
+  contents: write  
+
 on:
   schedule:
     - cron: "0 0 * * *" # run once a day at 00:00 UTC
