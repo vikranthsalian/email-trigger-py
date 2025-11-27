@@ -1,4 +1,11 @@
 # tests/test_main.py
+import os
+import sys
+
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+
 from fastapi.testclient import TestClient
 from unittest.mock import MagicMock, patch
 from main import app
