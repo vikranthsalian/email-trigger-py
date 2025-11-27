@@ -24,7 +24,7 @@ jobs:
       - name: Update README with traffic stats
         run: node .github/scripts/update-traffic.js
         env:
-          GH_TOKEN: ${{ secrets.TRAFFIC_STAT }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           REPO: vikranthsalian/email-trigger-py
 
       - name: Commit and push changes
