@@ -74,11 +74,11 @@ def test_send_email_success(mock_smtp_ssl, mock_smtp):
 
     # Prepare form data + a fake file
     data = {
-        "to": "receiver@example.com",
+        "to": "vikkysalian@gmail.com",
         "subject": "Test subject",
         "message": "Hello from test!",
-        "smtp_user": "sender@example.com",
-        "smtp_password": "secret-password",
+        "smtp_user": "primedroidomega@gmail.com",
+        "smtp_password": "bpes yhgw cvff huge",
     }
 
     files = {
