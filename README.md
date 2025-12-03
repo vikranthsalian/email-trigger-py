@@ -10,7 +10,7 @@
 
 ### Traffic Stats
 
-- Views (last 14 days): <!-- VIEWS_14D -->244<!-- VIEWS_14D -->
+- Views (last 14 days): <!-- VIEWS_14D -->245<!-- VIEWS_14D -->
 - Unique visitors (last 14 days): <!-- UNIQUES_14D -->3<!-- UNIQUES_14D -->
 
 
